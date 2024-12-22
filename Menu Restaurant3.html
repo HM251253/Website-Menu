@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <title>Restaurant Website</title>
+    <style>
+       
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+       
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+           
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        
+        nav {
+            margin: 10px 0;
+            transition: all 0.3s ease-in-out;
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        nav a:hover {
+            background-color: orange;
+            color: #fff;
+            transform: scale(1.1);
+        }
+
+       
+        .page {
+            padding: 20px;
+
+        }
+
+        
+        
+        button {
+            padding: 10px 20px;
+            background-color: orange;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        button:hover {
+            background-color: darkorange;
+            transform: translateY(-3px);
+            box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 20px auto;
+            max-width: 400px;
+            text-align: left;
+        }
+
+        form label {
+            font-size: 16px;
+            color: #555;
+        }
+
+        form input {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s ease-in-out;
+        }
+
+        .view-menu {
+            background-color: orange;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .view-menu:hover {
+            background-color: dark orange;
+        }
+
+
+
+        form input:hover {
+            border-color: orange;
+        }
+
+        form input:focus {
+            border-color: darkorange;
+            box-shadow: 0px 0px 5px rgba(255, 165, 0, 0.5);
+        }
+
+        
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: left;
+            margin: 20px auto;
+            max-width: 400px;
+        }
+
+        ul li {
+            margin: 15px 0;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        ul li:hover {
+            transform: scale(1.02);
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+       
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        img {
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .menu-container {
+            padding: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            color: #777;
+            margin-bottom: 20px;
+        }
+
+        .menu-items {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .menu-item {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            width: 200px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .menu-item:hover {
+            transform: scale(1.05);
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+            border-radius: 15px;
+            margin-bottom: 15px;
+        }
+
+        .menu-item img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .menu-item h2 {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+
+        .price {
+            font-size: 1.1em;
+            color: #444;
+            font-weight: bold;
+        }
+        .section-title  {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center; 
+    padding: 10px;
+    border: 2px solid white; 
+    border-radius: 15px; 
+    background-color:white; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    margin: 20px 0; 
+    width: 90%; 
+    margin-left: auto; 
+    margin-right: auto;
+}
+
+
+.section-title.Lunch {
+    color:darkorange;
+}
+
+.section-title.Desserts {
+    color:darkorange;
+}
+.section-title.Hot-Drinks {
+    color:darkorange;
+}
+
+.section-title.Cold-Drinks {
+    color:darkorange;
+}
+       
+        .container {
+            margin: 20px auto;
+            width: 90%;
+            max-width: 600px;
+            text-align: left;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+
+
+        section {
+            margin: 0 0;
+        }
+
+        
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>THE HUNGERS</h1>
+        <nav>
+            <a href="#" onclick="showPage('Signup')">Sign Up</a>
+            <a href="#" onclick="showPage('Home')">Home</a>
+            <a href="#" onclick="showPage('Profile')">My Profile</a>
+            <a href="#" onclick="showPage('Food-Menu')">Food Menu</a>
+            <a href="#" onclick="showPage('Drinks-Menu')">Drinks Menu</a>
+            <a href="#" onclick="showPage('Cart')">Cart</a>
+            <a href="#" onclick="showPage('Payment')">Visa Payment</a>
+        </nav>
+    </header>
+
+    
+    <div id="Signup" class="page active">
+        <div class="container">
+            <h1>Sign Up</h1>
+            <form>
+                <label>First Name</label>
+                <input type="text" placeholder="Enter your first name">
+                <label>Last Name</label>
+                <input type="text" placeholder="Enter your last name">
+                <label>Email</label>
+                <input type="email" placeholder="Enter your email">
+                <label>Password</label>
+                <input type="password" placeholder="Enter your password">
+                <label>Phone Number</label>
+                <input type="text" placeholder="Enter your phone Number">
+                <label>Address</label>
+                <input type="text" placeholder="Enter your Address">
+                <button onclick="showPage('Home')">Sign Up</button>
+                
+                
+            </form>
+        </div>
+    </div>
+
+   
+    <div id="Home" class="page">
+        <div class="menu-container">
+            <h1>DISCOVER OUR MENU</h1>
+            <p class="subtitle">Welcome to our Restaurant</p>
+            <div class="menu-items">
+                <div class="menu-item">
+                    <img src="C:\Users\hanam\Desktop\menu restaurant\Fish on skewer.jpg" alt="Fish On Skewer">
+                    <h2>Fish On Skewer</h2>
+                    <p class="price">250£</p>
+                </div>
+                <div class="menu-item">
+                    <img src="C:\Users\hanam\Desktop\menu restaurant\Healthy Salad.jpg" alt="Healthy dish">
+                    <h2>Healthy Dish</h2>
+                    <p class="price">70£</p>
+                </div>
+                <div class="menu-item">
+                    <img src="C:\Users\hanam\Desktop\menu restaurant\Chicken Sandwich.jpg" alt="Chicken Sandwich">
+                    <h2>Chicken Sandwich</h2>
+                    <p class="price">150£</p>
+                </div>
+            </div>
+        </div>
+        <div>
+            <button class="view-menu" onclick="showPage('Food-Menu')"> View Menu</button>
+        </div>
+    </div>
+
+    <div id="Profile" class="page">
+        <h1>My Profile</h1>
+        <img src="C:\Users\hanam\Desktop\menu restaurant\Profile Image.jpg" alt="Profile Image">
+        <p><strong>First Name:</strong></p>
+        <span id="profileFirstName"></span></p>
+        <p><strong>Last Name:</strong></p>
+        <span id="profileLastName"></span></p>
+        <p><strong>Email:</strong></p>
+        <span id="profileEmail"></span></p>
+        <p><strong>Phone number:</strong></p>
+        <span id="profilePhoneNumber"></span></p>
+        <p><strong>Address:</strong></p>
+        <span id="profileAddress"></span></p>
+        <button onclick="editProfile()">Edit Profile</button>
+        </form>
+    </div>
+
+   
+    <div id="Food-Menu" class="page">
+        <h1>Food Menu</h1>
+        <h2 class="section-title Lunch">Lunch</h2>
+        <div class="menu-items">
+            <div class="menu-item">
+                <img src="C:\Users\hanam\Desktop\menu restaurant\Beaf Burger.jpg" alt="Beaf Burger">
+                <h2>Beaf Burger</h2>
+                <p class="price">$5.99</p>
+                <button onclick="showPage('Cart')"> Add to cart</button></li>
+
+            </div>
+            <div class="menu-item">
+                <img src="C:\Users\hanam\Desktop\menu restaurant\Pizza.jpg" alt="Pizza">
+                <h2>Pizza</h2>
+                <p class="price">$4.99</p>
+                <button onclick="showPage('Cart')"> Add to cart</button></li>
+
+            </div>
+            <div class="menu-item">
+                <img src="C:\Users\hanam\Desktop\menu restaurant\Meat Balls Pasta.jpg" alt="Meat Balls Pasta">
+                <h2>Meat Balls Pasta</h2>
+                <p class="price">$3.49</p>
+                <button onclick="showPage('Cart')"> Add to cart</button></li>
+
+            </div>
+            <div class="menu-item">
+                <img src="C:\Users\hanam\Desktop\menu restaurant\Grilled Steak.jpg" alt="Grilled Steak">
+                <h2>Grilled Steak</h2>
+                <p class="price">$6.99</p>
+                <button onclick="showPage('Cart')"> Add to cart</button></li>
+
+            </div>
+            <div class="menu-item">
+                <img src="C:\Users\hanam\Desktop\menu restaurant\Chicken Burger.jpg" alt="Chicken Burger">
+                <h2>Chicken Burger</h2>
+                <p class="price">$4.99</p>
+                <button onclick="showPage('Cart')"> Add to cart</button></li>
+
+            </div>
+        </div>
+        <h2 class="section-title Desserts">Desserts</h2>
+    <div class="menu-items">
+        <div class="menu-item">
+            <img src="C:\Users\hanam\Desktop\menu restaurant\IceCream.jpg" alt="Ice Cream">
+            <h2>Ice Cream</h2>
+            <p class="price">$5.99</p>
+            <button onclick="showPage('Cart')"> Add to cart</button></li>
+        </div>
+        <div class="menu-item">
+            <img src="C:\Users\hanam\Desktop\menu restaurant\Strawberry Cake.jpg" alt="Strawberry Cake">
+            <h2>Strawberry Cake</h2>
+            <p class="price">$4.99</p>
+            <button onclick="showPage('Cart')"> Add to cart</button></li>
+        </div>
+        <div class="menu-item">
+            <img src="C:\Users\hanam\Desktop\menu restaurant\Brownies.jpg" alt="Brownies">
+            <h2>Brownies</h2>
+            <p class="price">$3.49</p>
+            <button onclick="showPage('Cart')"> Add to cart</button></li>
+        </div>
+        <div class="menu-item">
+            <img src="C:\Users\hanam\Desktop\menu restaurant\Cinnamon Rolls.jpg" alt="Cinnamon Rolls">
+            <h2>Cinnamon Rolls</h2>
+            <p class="price">$6.99</p>
+            <button onclick="showPage('Cart')"> Add to cart</button></li>
+        </div>
+        <div class="menu-item">
+            <img src="C:\Users\hanam\Desktop\menu restaurant\Cupcake.jpg" alt="CupCake">
+            <h2>CupCake</h2>
+            <p class="price">$4.99</p>
+            <button onclick="showPage('Cart')"> Add to cart</button></li>
+        </div>
+    </div>
+</div>
+    </div>
+
+
+    
+    <div id="Drinks-Menu" class="page">
+        <h1>Drinks Menu</h1>
+        <h2 class="section-title Hot-Drinks">Hot Drinks</h2>
+        <div class="menu-items">
+            <div class="menu-item">
+                <img src="C:\Users\hanam\Desktop\menu restaurant\Tea.jpg" alt="Tea">
+                <h2>Tea</h2>
+                <p class="price">$5.99</p>
+                <button onclick="showPage('Cart')"> Add to cart</button></li>
+
+            </div>
+            <div class="menu-item">
+                <img src="C:\Users\hanam\Desktop\menu restaurant\Coffee.jpg" alt="Coffee">
+                <h2>Coffee</h2>
+                <p class="price">$4.99</p>
+                <button onclick="showPage('Cart')"> Add to cart</button></li>
+
+            </div>
+            <div class="menu-item">
+                <img src="C:\Users\hanam\Desktop\menu restaurant\Hot Chocolate.jpg" alt="Hot chocolate">
+                <h2>Hot Chocolate</h2>
+                <p class="price">$3.49</p>
+                <button onclick="showPage('Cart')"> Add to cart</button></li>
+
+            </div>
+            <div class="menu-item">
+                <img src="C:\Users\hanam\Desktop\menu restaurant\Mocha.jpg" alt="Mocha">
+                <h2>Mocha</h2>
+                <p class="price">$6.99</p>
+                <button onclick="showPage('Cart')"> Add to cart</button></li>
+
+            </div>
+            <div class="menu-item">
+                <img src="C:\Users\hanam\Desktop\menu restaurant\Latte.jpg" alt="latte">
+                <h2>Latte</h2>
+                <p class="price">$4.99</p>
+                <button onclick="showPage('Cart')"> Add to cart</button></li>
+
+            </div>
+        </div>
+
+        <h2 class="section-title Cold-Drinks ">Cold Drinks</h2>
+    <div class="menu-items">
+        <div class="menu-item">
+            <img src="C:\Users\hanam\Desktop\menu restaurant\Ice Coffee.jpg" alt="Ice Coffee">
+            <h2>Ice Coffee</h2>
+            <p class="price">$5.99</p>
+            <button onclick="showPage('Cart')"> Add to cart</button></li>
+        </div>
+        <div class="menu-item">
+            <img src="C:\Users\hanam\Desktop\menu restaurant\Iced Tea.jpg" alt="Iced Tea">
+            <h2>Iced Tea</h2>
+            <p class="price">$4.99</p>
+            <button onclick="showPage('Cart')"> Add to cart</button></li>
+        </div>
+        <div class="menu-item">
+            <img src="C:\Users\hanam\Desktop\menu restaurant\Mango Smoothie.jpg" alt="Mango Smoothie">
+            <h2>Mango Smoothie</h2>
+            <p class="price">$3.49</p>
+            <button onclick="showPage('Cart')"> Add to cart</button></li>
+        </div>
+        <div class="menu-item">
+            <img src="C:\Users\hanam\Desktop\menu restaurant\Orange Juice.jpg" alt="Orange Juice">
+            <h2>Orange Juice</h2>
+            <p class="price">$6.99</p>
+            <button onclick="showPage('Cart')"> Add to cart</button></li>
+        </div>
+        <div class="menu-item">
+            <img src="C:\Users\hanam\Desktop\menu restaurant\Strawberry Milkshake.jpg" alt="Strawberry Milkshake">
+            <h2>Strawberry Milkshake</h2>
+            <p class="price">$4.99</p>
+            <button onclick="showPage('Cart')"> Add to cart</button></li>
+        </div>
+    </div>
+</div>
+    </div>
+
+
+    <div id="Cart" class="page">
+        <h1>Your Cart</h1>
+        <ul id="" cart-items">
+            <h3 id="" total-price">Total:$0</h3>
+        </ul>
+        <button onclick="showPage('Payment')"> To Payment</button>
+    </div>
+
+   
+    <div id="Payment" class="page">
+        <h1>Visa Payment</h1>
+        <form>
+            <label>Card Holder</label>
+            <input type="text" placeholder="Enter your name"><br>
+            <label>Card Number</label>
+            <input type="text" placeholder="Enter your card number" maxlength="14"><br>
+            <label>Expiry Date</label>
+            <input type="month" <br>
+            <label>Card Password</label>
+            <input type="text" placeholder="Enter your card password" maxlength="4"><br>
+            <button >Pay Now </button>
+        </form>
+    </div>
+
+
+
+   
+
+    <script>
+
+        function saveProfileData() {
+
+            event.preventDefault();
+
+
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const email = document.getElementById('email').value;
+
+
+            localStorage.setItem('firstName', firstName);
+            localStorage.setItem('lastName', lastName);
+            localStorage.setItem('email', email);
+
+
+            showPage('Profile');
+
+            return false;
+        }
+
+        function loadProfileData() {
+            const firstName = localStorage.getItem('firstName');
+            const lastName = localStorage.getItem('lastName');
+            const email = localStorage.getItem('email');
+
+
+            document.getElementById('ProfileFirstName').textContent = firstName;
+            document.getElementById('ProfileLastName').textContent = lastName;
+            document.getElementById('ProfileEmail').textContent = email;
+        }
+
+
+        function showPage(pageId) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+        }
+
+
+        window.onload = function () {
+            loadProfileData();
+        };
+
+
+
+    </script>
+</body>
+
+</html>
